@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "ec2" {
-  count = 2
+  count  = 2
   source = "./modules/ec2"
 }
 
