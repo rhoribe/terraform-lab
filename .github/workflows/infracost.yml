@@ -1,5 +1,5 @@
 
-name: 'Terraform'
+name: 'Terraform Infracost'
 
 on:
   push:
@@ -40,3 +40,18 @@ jobs:
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan
+
+    # Generates show for Terraform
+    - name: Terraform Show
+      run: terraform show
+
+    - name: "Save Plan JSON"
+      run: echo '${{ steps.show.outputs.stdout }}' > plan.json # Do not change
+
+    - name: Run infracost diff
+      uses: infracost/infracost-gh-action@master # Use a specific version instead of master if locking is preferred
+      env:
+        INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }}
+      with:
+        path: plan.json # Do not change as this file is generated above
