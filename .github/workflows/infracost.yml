@@ -43,6 +43,7 @@ jobs:
 
     # Generates show for Terraform
     - name: Terraform Show
+      id: show
       run: terraform show
 
     - name: "Save Plan JSON"
