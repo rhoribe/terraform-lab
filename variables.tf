@@ -7,5 +7,5 @@ variable "region" {
 variable "bucket" {
   description = "Buckect Name"
   type        = string
-  default     = "rhoribe-lab1"
+  default     = "rhoribe-lab"
 }
