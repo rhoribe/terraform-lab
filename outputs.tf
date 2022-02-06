@@ -1,5 +1,5 @@
 output "private_ip" {
-  value = module.ec2.private_ip[count.index]
+  value = module.ec2.private_ip[0]
 }
 
 output "bucket" {
