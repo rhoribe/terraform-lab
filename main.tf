@@ -13,7 +13,6 @@ module "vpc" {
 
 module "ec2" {
   source        = "./modules/ec2"
-  count =  local.ec2_config.count
   ami           = data.aws_ami.ubuntu.id
   instance_type = local.ec2_config.instance_type
   instance_name = local.ec2_config.instance_name
