@@ -13,7 +13,7 @@ locals {
     count         = 1
   }
   s3_config = {
-    bucket_name = "aws-lab-bucket"
+    bucket_name = "awslab"
     count       = 1
   }
 }
