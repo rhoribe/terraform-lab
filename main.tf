@@ -2,10 +2,8 @@ provider "aws" {
   region = var.region
 }
 
-resource "random_string" "random" {
-  length  = 3
-  special = false
-  upper   = false
+resource "random_id" "random_sufix" {
+  byte_length = 8
 }
 
 
@@ -31,5 +29,5 @@ module "ec2" {
 module "s3" {
   source = "./modules/s3"
   count  = local.s3_config.count
-  bucket = "local.s3_config.bucket_name-${count.index}-${random_string.random.result}"
+  bucket = "local.s3_config.bucket_name-${count.index}-${random_id.random_sufix.hex}"
 }
