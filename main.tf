@@ -30,5 +30,5 @@ module "ec2" {
 module "s3" {
   source = "./modules/s3"
   count  = local.s3_config.count
-  bucket = "local.s3_config.bucket_name-${count.index}-${random_string.random.value}"
+  bucket = "local.s3_config.bucket_name-${count.index}-${random_string.random.result}"
 }
