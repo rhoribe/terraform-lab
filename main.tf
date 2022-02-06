@@ -16,7 +16,7 @@ module "ec2" {
   count         = local.ec2_config.count
   ami           = data.aws_ami.ubuntu.id
   instance_type = local.ec2_config.instance_type
-  instance_name = local.ec2_config.instance_name-count.index
+  instance_name = "local.ec2_config.instance_name-${count.index}"
   subnet_id     = module.vpc.subnet_id
   depends_on    = [module.vpc]
 }
