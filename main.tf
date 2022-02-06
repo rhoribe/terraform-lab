@@ -4,10 +4,10 @@ provider "aws" {
 
 locals {
   vpc_config = {
-    vpc_cidr = "10.0.0.0/16"
-    subnet_cidr = "10.0.0.0/24"
-    vpc_name = "aws-lab"
-    subnet_name = "aws-lab-subnet"
+    vpc_cidr          = "10.0.0.0/16"
+    subnet_cidr       = "10.0.0.0/24"
+    vpc_name          = "aws-lab"
+    subnet_name       = "aws-lab-subnet"
     availability_zone = "us-east-1a"
   }
   ec2_config = {
