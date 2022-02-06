@@ -1,9 +1,9 @@
-terraform {
-  backend "remote" {
-    organization = "rh-aws-lab"
-    workspaces {
-      name = "terraform-lab"
-    }
-  }
-}
+# terraform {
+#   backend "remote" {
+#     organization = "rh-aws-lab"
+#     workspaces {
+#       name = "terraform-lab"
+#     }
+#   }
+# }
 
