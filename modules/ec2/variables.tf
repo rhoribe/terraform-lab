@@ -21,3 +21,22 @@ variable "subnet_id" {
   description = "subnet id"
   default     = ""
 }
+
+variable "vpc_security_group_ids" {
+  description = "VPC Security Groups"
+  type        = list(string)
+  default     = []
+}
+
+variable "key_name" {
+  description = "Key Name"
+  type        = string
+  default     = null
+  sensitive   = true
+}
+
+variable "associate_public_ip_address" {
+  description = "Associate Public IP"
+  type        = bool
+  default     = false
+}

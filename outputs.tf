@@ -1,7 +1,11 @@
-# output "private_ip" {
-#   value = module.ec2[0].private_ip
-# }
+output "private_ip" {
+  value = module.ec2[*].private_ip
+}
+
+output "public_ip" {
+  value = module.ec2[*].public_ip
+}
 
 output "bucket" {
-  value = module.s3[0].bucket
+  value = module.s3[*].bucket
 }

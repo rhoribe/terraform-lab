@@ -1,4 +1,3 @@
-
 locals {
   vpc_config = {
     vpc_cidr          = "10.0.0.0/16"
@@ -8,9 +7,11 @@ locals {
     availability_zone = "us-east-1a"
   }
   ec2_config = {
-    instance_type = "t2.micro"
-    instance_name = "aws-lab"
-    count         = 1
+    instance_type               = "t2.micro"
+    instance_name               = "aws-lab"
+    key_name                    = "aws-lab"
+    associate_public_ip_address = true
+    count                       = 1
   }
   s3_config = {
     bucket_name = "awslab"
