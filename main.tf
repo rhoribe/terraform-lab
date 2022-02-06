@@ -14,6 +14,9 @@ module "vpc" {
   subnet_cidr       = local.vpc_config.subnet_cidr
   availability_zone = local.vpc_config.availability_zone
   subnet_name       = local.vpc_config.subnet_name
+  internet_gw_name  = local.vpc_config.internet_gw_name
+  route_table_name  = local.vpc_config.route_table_name
+  route_table_cidr  = local.vpc_config.route_table_cidr
 }
 
 module "sg" {

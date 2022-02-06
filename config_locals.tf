@@ -5,6 +5,9 @@ locals {
     vpc_name          = "aws-lab"
     subnet_name       = "aws-lab-subnet"
     availability_zone = "us-east-1a"
+    internet_gw_name  = "aws-lab-gw"
+    route_table_name  = "aws-lab-rt"
+    route_table_cidr  = "0.0.0.0/0"
   }
   ec2_config = {
     instance_type               = "t2.micro"

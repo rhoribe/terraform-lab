@@ -27,3 +27,21 @@ variable "availability_zone" {
   description = "Availability zone"
   default     = ""
 }
+
+variable "internet_gw_name" {
+  description = "Internet  Gateway Name "
+  type        = string
+  default     = null
+}
+
+variable "route_table_name" {
+  description = "Route Table Name"
+  type        = string
+  default     = null
+}
+
+variable "route_table_cidr" {
+  description = "Route Table cidr"
+  type        = string
+  default     = null
+}
