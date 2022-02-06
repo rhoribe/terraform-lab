@@ -10,8 +10,10 @@ locals {
   ec2_config = {
     instance_type = "t2.micro"
     instance_name = "aws-lab"
+    count         = 1
   }
   s3_config = {
     bucket_name = "aws-lab-bucket"
+    count       = 1
   }
 }
