@@ -1,67 +1,67 @@
 
-name: 'Infracost'
-on:
-  push:
-    branches:
-    - main
-  pull_request:
+# name: 'Infracost'
+# on:
+#   push:
+#     branches:
+#     - main
+#   pull_request:
 
-jobs:
-  Infracost:
-    name: Infracost
-    runs-on: ubuntu-latest
-    environment: production
+# jobs:
+#   Infracost:
+#     name: Infracost
+#     runs-on: ubuntu-latest
+#     environment: production
 
-    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
-    defaults:
-      run:
-        shell: bash
+#     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+#     defaults:
+#       run:
+#         shell: bash
 
-    steps:
-    # Checkout the repository to the GitHub Actions runner
-    - name: Checkout
-      uses: actions/checkout@v2
+#     steps:
+#     # Checkout the repository to the GitHub Actions runner
+#     - name: Checkout
+#       uses: actions/checkout@v2
 
-    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-      with:
-        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+#     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+#     - name: Setup Terraform
+#       uses: hashicorp/setup-terraform@v1
+#       with:
+#         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Terraform Init
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: terraform init
+#     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+#     - name: Terraform Init
+#       env:
+#         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#       run: terraform init
 
-    # Checks that all Terraform configuration files adhere to a canonical format
-    - name: Terraform Format
-      run: terraform fmt -check
+#     # Checks that all Terraform configuration files adhere to a canonical format
+#     - name: Terraform Format
+#       run: terraform fmt -check
 
-    # Generates an execution plan for Terraform
-    - name: Terraform Plan
-      id: plan
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: terraform plan -out plan.tfplan
+#     # Generates an execution plan for Terraform
+#     - name: Terraform Plan
+#       id: plan
+#       env:
+#         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#       run: terraform plan -out plan.tfplan
 
-    # Generates show for Terraform
-    - name: Terraform Show
-      id: show
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: terraform show -json plan.tfplan
+#     # Generates show for Terraform
+#     - name: Terraform Show
+#       id: show
+#       env:
+#         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#       run: terraform show -json plan.tfplan
 
-    - name: "Save Plan JSON"
-      run: echo '${{ steps.show.outputs.stdout }}' > plan.json # Do not change
+#     - name: "Save Plan JSON"
+#       run: echo '${{ steps.show.outputs.stdout }}' > plan.json # Do not change
 
-    - name: Run infracost diff
-      uses: infracost/infracost-gh-action@master # Use a specific version instead of master if locking is preferred
-      env:
-        INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
-        GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }}
-      with:
-        path: plan.json # Do not change as this file is generated above
+#     - name: Run infracost diff
+#       uses: infracost/infracost-gh-action@master # Use a specific version instead of master if locking is preferred
+#       env:
+#         INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
+#         GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }}
+#       with:
+#         path: plan.json # Do not change as this file is generated above
