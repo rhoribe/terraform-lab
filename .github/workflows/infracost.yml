@@ -1,6 +1,5 @@
 
 name: 'Infracost'
-
 on:
   push:
     branches:
@@ -9,7 +8,7 @@ on:
 
 jobs:
   Infracost:
-    name: 'Infracost'
+    name: Infracost
     runs-on: ubuntu-latest
     environment: production
 

@@ -6,7 +6,7 @@ on:
   pull_request:
 jobs:
   TFSec:
-    name: tfsec sarif report
+    name: TFSec
     runs-on: ubuntu-latest
 
     steps:
