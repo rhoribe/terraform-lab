@@ -9,6 +9,12 @@ locals {
     route_table_name  = "aws-lab-rt"
     route_table_cidr  = "0.0.0.0/0"
   }
+  efs_config = {
+    creation_token = "awslab"
+    encrypted      = true
+    kms_key_id     = "arn:aws:kms:us-east-1:406697556424:key/a1aa280e-eb54-42d0-a104-1af70fc4f2b8"
+    name           = "awslab"
+  }
   ec2_config = {
     instance_type               = "t2.micro"
     instance_name               = "aws-lab"

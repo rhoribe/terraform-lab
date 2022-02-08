@@ -29,6 +29,16 @@ module "sg" {
   depends_on     = [module.vpc]
 }
 
+module "efs" {
+  source                 = "./modules/efs"
+  creation_token         = local.efs_config.creation_token
+  availability_zone_name = module.vpc.availability_zone
+  encrypted              = local.efs_config.encrypted
+  kms_key_id             = local.efs_config.kms_key_id
+  name                   = local.efs_config.name
+  depends_on             = [module.vpc]
+}
+
 module "ec2" {
   source                      = "./modules/ec2"
   count                       = local.ec2_config.count
