@@ -18,7 +18,7 @@ locals {
   }
   s3_config = {
     bucket_name = "awslab"
-    versioning = true
+    versioning  = true
     count       = 1
   }
 }
