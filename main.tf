@@ -40,6 +40,10 @@ module "ec2" {
   vpc_security_group_ids      = [module.sg.sg_id]
   key_name                    = local.ec2_config.key_name
   depends_on                  = [module.vpc]
+  encrypted = local.ec2_config.encrypted
+  kms_key_id = local.ec2_config.kms_key_id
+  volume_type = local.ec2_config.volume_type
+  volume_size = local.ec2_config.volume_size
 }
 
 module "s3" {

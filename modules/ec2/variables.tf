@@ -40,3 +40,27 @@ variable "associate_public_ip_address" {
   type        = bool
   default     = false
 }
+
+variable "encrypted" {
+  type        = bool
+  description = "Ecrypted Volume"
+  default     = false
+}
+
+variable "volume_type" {
+  type        = string
+  description = "Volume Type"
+  default     = "gp2"
+}
+
+variable "volume_size" {
+  type        = string
+  description = "Volume Size"
+  default     = 8
+}
+
+variable "kms_key_id" {
+  type        = string
+  description = "KMS Key ID"
+  default     = ""
+}

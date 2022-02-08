@@ -15,6 +15,10 @@ locals {
     key_name                    = "aws-lab"
     associate_public_ip_address = true
     count                       = 1
+    encrypted                   = true
+    kms_key_id                  = "alias/awslab"
+    volume_type                 = "gp2"
+    volume_size                 = 8
   }
   s3_config = {
     bucket_name = "awslab"
