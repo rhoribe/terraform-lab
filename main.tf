@@ -39,7 +39,6 @@ module "ec2" {
   subnet_id                   = module.vpc.subnet_id
   vpc_security_group_ids      = [module.sg.sg_id]
   key_name                    = local.ec2_config.key_name
-
   depends_on = [module.vpc]
 }
 
@@ -47,4 +46,5 @@ module "s3" {
   source = "./modules/s3"
   count  = local.s3_config.count
   bucket = "${local.s3_config.bucket_name}-${count.index}-${random_id.random_sufix.hex}"
+  versioning = local.s3_config.versioning
 }
