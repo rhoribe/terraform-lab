@@ -9,3 +9,7 @@ output "public_ip" {
 output "bucket" {
   value = module.s3[*].bucket
 }
+
+output "rds_endpoint" {
+  value = module.rds[*].endpoint
+}

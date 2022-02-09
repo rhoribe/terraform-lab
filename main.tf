@@ -63,10 +63,10 @@ module "s3" {
   versioning = local.s3_config.versioning
 }
 
-
 module "rds" {
   source                          = "./modules/rds"
-  identifier                      = local.rds_config.identifier
+  count                           = local.rds_config.count
+  identifier                      = "${local.rds_config.identifier}-${count.index}"
   instance_class                  = local.rds_config.instance_class
   allocated_storage               = local.rds_config.allocated_storage
   max_allocated_storage           = local.rds_config.max_allocated_storage
@@ -84,11 +84,13 @@ module "rds" {
   username                        = local.rds_config.username
   skip_final_snapshot             = local.rds_config.skip_final_snapshot
   storage_type                    = local.rds_config.storage_type
-  kms_key_id                      = data.aws_kms_key.key.arn
+  kms_key_id                      = local.rds_config.storage_encrypted == true ? data.aws_kms_key.key.arn : ""
   enabled_cloudwatch_logs_exports = local.rds_config.enabled_cloudwatch_logs_exports
   engine_name                     = local.rds_config.engine_name
   major_engine_version            = local.rds_config.major_engine_version
   family                          = local.rds_config.family
+  engine_version                  = local.rds_config.engine_version
+  license_model                   = local.rds_config.license_model
   subnet_ids                      = module.vpc.subnet_id
   depends_on                      = [module.vpc, module.sg]
 }

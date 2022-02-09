@@ -12,7 +12,6 @@ locals {
   efs_config = {
     creation_token = "awslab"
     encrypted      = true
-    kms_key_id     = "arn:aws:kms:us-east-1:406697556424:key/a1aa280e-eb54-42d0-a104-1af70fc4f2b8"
     name           = "awslab"
   }
   ec2_config = {
@@ -31,11 +30,12 @@ locals {
     count       = 1
   }
   rds_config = {
+    count                           = 1
     identifier                      = "awslab"
     instance_class                  = "db.t2.micro"
     allocated_storage               = 10
     max_allocated_storage           = 20
-    storage_encrypted               = true
+    storage_encrypted               = false
     backup_retention_period         = 1
     backup_window                   = "04:00-05:00"
     ca_cert_identifier              = "rds-ca-2019"
@@ -51,6 +51,8 @@ locals {
     enabled_cloudwatch_logs_exports = ["error"]
     engine_name                     = "mysql"
     major_engine_version            = "5.7"
-    family                          = "mysql5.6"
+    family                          = "mysql5.7"
+    engine_version                  = "5.7.26"
+    license_model                   = "general-public-license"
   }
 }

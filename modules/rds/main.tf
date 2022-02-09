@@ -43,7 +43,7 @@ resource "aws_db_instance" "db" {
   identifier                      = var.identifier
   instance_class                  = var.instance_class
   engine                          = aws_db_option_group.db_option_group.engine_name
-  engine_version                  = aws_db_option_group.db_option_group.major_engine_version
+  engine_version                  = var.engine_version
   allocated_storage               = var.allocated_storage
   max_allocated_storage           = var.max_allocated_storage
   storage_encrypted               = var.storage_encrypted
@@ -60,12 +60,13 @@ resource "aws_db_instance" "db" {
   port                            = var.port
   publicly_accessible             = var.publicly_accessible
   username                        = var.username
-  password                        = data.aws_secretsmanager_secret_version.password.secret_string
+  password                        = aws_secretsmanager_secret_version.password.secret_string
   option_group_name               = aws_db_option_group.db_option_group.name
   skip_final_snapshot             = var.skip_final_snapshot
   storage_type                    = var.storage_type
   kms_key_id                      = var.kms_key_id
   enabled_cloudwatch_logs_exports = var.enabled_cloudwatch_logs_exports
+  license_model                   = var.license_model
   depends_on = [
     aws_secretsmanager_secret_version.password,
     aws_db_parameter_group.parameter_group,

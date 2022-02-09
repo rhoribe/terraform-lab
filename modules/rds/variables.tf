@@ -144,3 +144,15 @@ variable "vpc_security_group_ids" {
   type        = list(string)
   default     = [""]
 }
+
+variable "engine_version" {
+  description = "Engine Version"
+  type        = string
+  default     = ""
+}
+
+variable "license_model" {
+  description = "License model of the DB instance"
+  type        = string
+  default     = "general-public-license"
+}

@@ -1,9 +1,5 @@
 data "aws_caller_identity" "current" {}
 
-data "aws_secretsmanager_secret_version" "password" {
-  secret_id = aws_secretsmanager_secret.password.id
-}
-
 data "aws_iam_policy_document" "kms_policy" {
   version = "2012-10-17"
   statement {
