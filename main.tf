@@ -63,6 +63,17 @@ module "s3" {
   versioning = local.s3_config.versioning
 }
 
+module "rds_password" {
+  source                  = "./modules/secretmanager"
+  length                  = local.rds_sm_config.length
+  special                 = local.rds_sm_config.special
+  min_upper               = local.rds_sm_config.min_upper
+  min_lower               = local.rds_sm_config.min_lower
+  min_numeric             = local.rds_sm_config.min_numeric
+  name                    = local.rds_config.identifier
+  recovery_window_in_days = local.rds_sm_config.recovery_window_in_days
+}
+
 module "rds" {
   source                          = "./modules/rds"
   count                           = local.rds_config.count
@@ -82,6 +93,7 @@ module "rds" {
   port                            = local.rds_config.port
   publicly_accessible             = local.rds_config.publicly_accessible
   username                        = local.rds_config.username
+  password                        = module.rds_password.secret_string
   skip_final_snapshot             = local.rds_config.skip_final_snapshot
   storage_type                    = local.rds_config.storage_type
   kms_key_id                      = local.rds_config.storage_encrypted == true ? data.aws_kms_key.key.arn : ""
@@ -92,5 +104,5 @@ module "rds" {
   engine_version                  = local.rds_config.engine_version
   license_model                   = local.rds_config.license_model
   subnet_ids                      = module.vpc.subnet_id
-  depends_on                      = [module.vpc, module.sg]
+  depends_on                      = [module.vpc, module.sg, module.rds_password]
 }

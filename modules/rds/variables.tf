@@ -31,6 +31,13 @@ variable "username" {
   default     = "dbmaster"
 }
 
+variable "password" {
+  description = "DB Password"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
 variable "identifier" {
   description = "Instance name"
   type        = string

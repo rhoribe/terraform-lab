@@ -1,27 +1,3 @@
-resource "random_password" "master" {
-  length      = 16
-  special     = false
-  min_upper   = 2
-  min_lower   = 2
-  min_numeric = 2
-  # min_special      = 3
-  # override_special = "!@#$%&*()-_=+[]{}<>:?"
-}
-
-resource "aws_secretsmanager_secret" "password" {
-  name                    = var.identifier
-  recovery_window_in_days = 0
-}
-
-resource "aws_secretsmanager_secret_version" "password" {
-  secret_id     = aws_secretsmanager_secret.password.id
-  secret_string = random_password.master.result
-  depends_on = [
-    random_password.master,
-    aws_secretsmanager_secret.password
-  ]
-}
-
 resource "aws_db_subnet_group" "subnet_group" {
   name       = "${var.identifier}-subnet-group"
   subnet_ids = var.subnet_ids
@@ -60,7 +36,7 @@ resource "aws_db_instance" "db" {
   port                            = var.port
   publicly_accessible             = var.publicly_accessible
   username                        = var.username
-  password                        = aws_secretsmanager_secret_version.password.secret_string
+  password                        = var.password
   option_group_name               = aws_db_option_group.db_option_group.name
   skip_final_snapshot             = var.skip_final_snapshot
   storage_type                    = var.storage_type
@@ -68,7 +44,6 @@ resource "aws_db_instance" "db" {
   enabled_cloudwatch_logs_exports = var.enabled_cloudwatch_logs_exports
   license_model                   = var.license_model
   depends_on = [
-    aws_secretsmanager_secret_version.password,
     aws_db_parameter_group.parameter_group,
     aws_db_subnet_group.subnet_group,
     aws_db_option_group.db_option_group

@@ -29,6 +29,14 @@ locals {
     versioning  = true
     count       = 1
   }
+  rds_sm_config = {
+    length                  = 16
+    special                 = false
+    min_upper               = 3
+    min_lower               = 3
+    min_numeric             = 3
+    recovery_window_in_days = 0
+  }
   rds_config = {
     count                           = 1
     identifier                      = "awslab"
