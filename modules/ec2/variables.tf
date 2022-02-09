@@ -54,7 +54,7 @@ variable "volume_type" {
 }
 
 variable "volume_size" {
-  type        = string
+  type        = number
   description = "Volume Size"
   default     = 8
 }

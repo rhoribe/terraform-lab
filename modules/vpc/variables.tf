@@ -17,15 +17,15 @@ variable "subnet_name" {
 }
 
 variable "subnet_cidr" {
-  type        = string
+  type        = list(any)
   description = "Subnet cidr block"
-  default     = ""
+  default     = []
 }
 
 variable "availability_zone" {
-  type        = string
+  type        = list(any)
   description = "Availability zone"
-  default     = ""
+  default     = []
 }
 
 variable "internet_gw_name" {

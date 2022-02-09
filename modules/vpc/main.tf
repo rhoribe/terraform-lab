@@ -6,12 +6,13 @@ resource "aws_vpc" "vpc" {
 }
 
 resource "aws_subnet" "subnet" {
+  count             = length(var.subnet_cidr)
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.subnet_cidr
-  availability_zone = var.availability_zone
+  cidr_block        = element(var.subnet_cidr, count.index)
+  availability_zone = element(var.availability_zone, count.index)
 
   tags = {
-    Name = var.subnet_name
+    Name = "${var.subnet_name}-${count.index + 1}"
   }
   depends_on = [
     aws_vpc.vpc
@@ -44,7 +45,8 @@ resource "aws_route_table" "route_table" {
 }
 
 resource "aws_route_table_association" "route_table_association" {
-  subnet_id      = aws_subnet.subnet.id
+  count          = length(var.subnet_cidr)
+  subnet_id      = element(aws_subnet.subnet.*.id, count.index)
   route_table_id = aws_route_table.route_table.id
   depends_on = [
     aws_route_table.route_table
