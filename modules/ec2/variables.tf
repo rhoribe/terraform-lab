@@ -64,3 +64,9 @@ variable "kms_key_id" {
   description = "KMS Key ID"
   default     = ""
 }
+
+variable "user_data" {
+  type        = string
+  description = "User Data"
+  default     = ""
+}

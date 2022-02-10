@@ -1,8 +1,4 @@
 
-resource "random_id" "random_sufix" {
-  byte_length = 4
-}
-
 module "vpc" {
   source            = "./modules/vpc"
   vpc_cidr          = local.vpc_config.vpc_cidr
@@ -35,14 +31,21 @@ module "sg_rds" {
   depends_on     = [module.vpc, module.sg_ec2]
 }
 
+module "kms" {
+  source                  = "./modules/kms"
+  description             = local.kms_config.description
+  name                    = local.kms_config.name
+  deletion_window_in_days = local.kms_config.deletion_window_in_days
+}
+
 module "efs" {
   source                 = "./modules/efs"
   creation_token         = local.efs_config.creation_token
   availability_zone_name = module.vpc.availability_zone[0]
   encrypted              = local.efs_config.encrypted
-  kms_key_id             = data.aws_kms_key.key.arn
+  kms_key_id             = module.kms.key_id
   name                   = local.efs_config.name
-  depends_on             = [module.vpc]
+  depends_on             = [module.vpc, module.kms]
 }
 
 module "ec2" {
@@ -55,11 +58,16 @@ module "ec2" {
   subnet_id                   = module.vpc.subnet_id[0]
   vpc_security_group_ids      = [module.sg_ec2.id]
   key_name                    = local.ec2_config.key_name
-  depends_on                  = [module.vpc]
   encrypted                   = local.ec2_config.encrypted
-  kms_key_id                  = data.aws_kms_key.key.arn
+  kms_key_id                  = module.kms.arn
   volume_type                 = local.ec2_config.volume_type
   volume_size                 = local.ec2_config.volume_size
+  user_data                   = data.cloudinit_config.user_data.rendered
+  depends_on                  = [module.vpc, module.sg_ec2, data.cloudinit_config.user_data, module.kms]
+}
+
+resource "random_id" "random_sufix" {
+  byte_length = 4
 }
 
 module "s3" {
@@ -67,6 +75,7 @@ module "s3" {
   count      = local.s3_config.count
   bucket     = "${local.s3_config.bucket_name}-${count.index}-${random_id.random_sufix.hex}"
   versioning = local.s3_config.versioning
+  depends_on = [random_id.random_sufix]
 }
 
 module "rds_password" {
@@ -102,7 +111,7 @@ module "rds" {
   password                        = module.rds_password.secret_string
   skip_final_snapshot             = local.rds_config.skip_final_snapshot
   storage_type                    = local.rds_config.storage_type
-  kms_key_id                      = local.rds_config.storage_encrypted == true ? data.aws_kms_key.key.arn : ""
+  kms_key_id                      = local.rds_config.storage_encrypted == true ? module.kms.arn : ""
   enabled_cloudwatch_logs_exports = local.rds_config.enabled_cloudwatch_logs_exports
   engine_name                     = local.rds_config.engine_name
   major_engine_version            = local.rds_config.major_engine_version
@@ -110,5 +119,5 @@ module "rds" {
   engine_version                  = local.rds_config.engine_version
   license_model                   = local.rds_config.license_model
   subnet_ids                      = module.vpc.subnet_id
-  depends_on                      = [module.vpc, module.sg_rds, module.rds_password]
+  depends_on                      = [module.vpc, module.sg_rds, module.rds_password, module.kms]
 }

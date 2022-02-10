@@ -9,6 +9,11 @@ locals {
     route_table_name  = "aws-lab-rt"
     route_table_cidr  = "0.0.0.0/0"
   }
+  kms_config = {
+    name                    = "alias/aws-lab-kms"
+    description             = "aws-lab-kms"
+    deletion_window_in_days = 7
+  }
   efs_config = {
     creation_token = "awslab"
     encrypted      = true
