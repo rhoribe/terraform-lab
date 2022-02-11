@@ -70,12 +70,12 @@ resource "random_id" "random_sufix" {
   byte_length = 4
 }
 
-// module "s3" {
-//   source     = "./modules/s3"
-//   count      = local.s3_config.count
-//   bucket     = "${local.s3_config.bucket_name}-${count.index}-${random_id.random_sufix.hex}"
-//   versioning = local.s3_config.versioning
-// }
+module "s3" {
+  source     = "./modules/s3"
+  count      = local.s3_config.count
+  bucket     = "${local.s3_config.bucket_name}-${count.index}-${random_id.random_sufix.hex}"
+  versioning = local.s3_config.versioning
+}
 
 module "rds_password" {
   source                  = "./modules/secretmanager"
