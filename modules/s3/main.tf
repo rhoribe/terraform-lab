@@ -1,10 +1,6 @@
 resource "aws_s3_bucket" "s3" {
   bucket = var.bucket
   tags   = var.tags
-
-  versioning {
-    enabled = var.versioning
-  }
 }
 
 resource "aws_s3_bucket_public_access_block" "s3" {
@@ -13,4 +9,12 @@ resource "aws_s3_bucket_public_access_block" "s3" {
   block_public_acls       = var.block_public_acls
   block_public_policy     = var.block_public_policy
   restrict_public_buckets = var.restrict_public_buckets
+  depends_on             = [aws_s3_bucket.s3]
 }
+
+resource "aws_s3_bucket_versioning" "s3" {
+  bucket = aws_s3_bucket.s3.bucket
+  enabled = var.versioning
+  depends_on [aws_s3_bucket.s3]
+}
+
