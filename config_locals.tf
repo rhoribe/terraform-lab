@@ -32,6 +32,7 @@ locals {
   s3_config = {
     bucket_name = "awslab"
     count       = 1
+    versioning = true
   }
   rds_sm_config = {
     length                  = 16

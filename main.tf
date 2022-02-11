@@ -73,6 +73,7 @@ resource "random_id" "random_sufix" {
 module "s3" {
   source     = "./modules/s3"
   count      = local.s3_config.count
+  versioning = local.s3_config.versioning
   bucket     = "${local.s3_config.bucket_name}-${count.index}-${random_id.random_sufix.hex}"
 }
 
