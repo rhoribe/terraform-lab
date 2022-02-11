@@ -2,6 +2,16 @@ provider "aws" {
   region = var.region
 }
 
+terraform {
+  required_providers {
+    mycloud = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+
 // provider "aws" {
 //   region                      = "us-east-1"
 //   access_key                  = "mock_access"
