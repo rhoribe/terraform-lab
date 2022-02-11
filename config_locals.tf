@@ -30,9 +30,9 @@ locals {
     volume_size                 = 8
   }
   s3_config = {
-    bucket_name = "awslab"
-    count       = 1
-    versioning = true
+    bucket_name       = "awslab"
+    count             = 1
+    versioning_status = "Enabled"
   }
   rds_sm_config = {
     length                  = 16
