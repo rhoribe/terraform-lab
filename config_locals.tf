@@ -31,7 +31,6 @@ locals {
   }
   s3_config = {
     bucket_name = "awslab"
-    versioning  = true
     count       = 1
   }
   rds_sm_config = {

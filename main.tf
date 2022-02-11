@@ -74,7 +74,6 @@ module "s3" {
   source     = "./modules/s3"
   count      = local.s3_config.count
   bucket     = "${local.s3_config.bucket_name}-${count.index}-${random_id.random_sufix.hex}"
-  versioning = local.s3_config.versioning
 }
 
 module "rds_password" {

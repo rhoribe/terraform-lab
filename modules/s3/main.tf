@@ -1,10 +1,6 @@
 resource "aws_s3_bucket" "s3" {
   bucket = var.bucket
   tags   = var.tags
-
-  versioning {
-    enabled = var.versioning
-  }
 }
 
 resource "aws_s3_bucket_public_access_block" "s3" {

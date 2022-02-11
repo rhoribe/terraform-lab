@@ -28,11 +28,6 @@ variable "restrict_public_buckets" {
   default     = true
 }
 
-variable "versioning" {
-  description = "Versioning"
-  type        = bool
-  default     = false
-}
 
 variable "bucket" {
   description = "Buckect Name"
