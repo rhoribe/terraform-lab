@@ -17,5 +17,7 @@ resource "aws_s3_bucket_versioning" "s3" {
   versioning_configuration {
     status = var.versioning_status
   }
+  depends_on = [aws_s3_bucket.s3]
+
 }
 
