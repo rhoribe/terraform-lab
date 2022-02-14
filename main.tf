@@ -43,7 +43,7 @@ module "efs" {
   creation_token         = local.efs_config.creation_token
   availability_zone_name = module.vpc.availability_zone[0]
   encrypted              = local.efs_config.encrypted
-  kms_key_id             = module.kms.key_id
+  kms_key_id             = module.kms.arn
   name                   = local.efs_config.name
   depends_on             = [module.vpc, module.kms]
 }
@@ -84,7 +84,7 @@ module "rds_password" {
   min_upper               = local.rds_sm_config.min_upper
   min_lower               = local.rds_sm_config.min_lower
   min_numeric             = local.rds_sm_config.min_numeric
-  name                    = local.rds_config.identifier
+  name                    = "${local.rds_config.identifier}-teste"
   recovery_window_in_days = local.rds_sm_config.recovery_window_in_days
 }
 

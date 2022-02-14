@@ -9,7 +9,7 @@ locals {
         from_port       = 22
         to_port         = 22
         protocol        = "tcp"
-        cidr_blocks     = ["45.238.254.242/32"]
+        cidr_blocks     = ["45.238.254.143/32"]
         security_groups = []
       }
     ]
