@@ -1,6 +1,9 @@
 resource "aws_s3_bucket" "s3" {
   bucket = var.bucket
   tags   = var.tags
+  versioning {
+    enabled = var.versioning
+  }
 }
 
 resource "aws_s3_bucket_public_access_block" "s3" {
@@ -12,12 +15,4 @@ resource "aws_s3_bucket_public_access_block" "s3" {
   depends_on              = [aws_s3_bucket.s3]
 }
 
-resource "aws_s3_bucket_versioning" "s3" {
-  bucket = aws_s3_bucket.s3.id
-  versioning_configuration {
-    status = var.versioning_status
-  }
-  depends_on = [aws_s3_bucket.s3]
-
-}
 

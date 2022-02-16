@@ -34,8 +34,8 @@ variable "bucket" {
   default     = ""
 }
 
-variable "versioning_status" {
-  description = "Bucket Versioning Status"
-  type        = string
-  default     = "Suspended"
+variable "versioning" {
+  description = "Versioning"
+  type        = bool
+  default     = false
 }
