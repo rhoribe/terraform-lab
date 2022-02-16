@@ -33,9 +33,3 @@ variable "bucket" {
   type        = string
   default     = ""
 }
-
-variable "versioning" {
-  description = "Versioning"
-  type        = bool
-  default     = false
-}
