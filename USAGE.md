@@ -25,9 +25,7 @@
 
 | Name | Description |
 |------|-------------|
-| bucket | n/a |
-| private\_ip | n/a |
-| public\_ip | n/a |
-| rds\_endpoint | n/a |
+| private\_subnet\_ids | n/a |
+| public\_subnet\_ids | n/a |
 
 <!--- END_TF_DOCS --->
