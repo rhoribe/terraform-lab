@@ -70,3 +70,9 @@ variable "user_data" {
   description = "User Data"
   default     = ""
 }
+
+variable "iam_instance_profile" {
+  type        = string
+  description = "IAM Instance Profile"
+  default     = ""
+}

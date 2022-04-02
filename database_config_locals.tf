@@ -1,40 +1,5 @@
 locals {
-  vpc_config = {
-    vpc_cidr          = "10.0.0.0/16"
-    subnet_cidr       = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-    vpc_name          = "aws-lab"
-    subnet_name       = "aws-lab-subnet"
-    availability_zone = ["us-east-1a", "us-east-1b", "us-east-1c"]
-    internet_gw_name  = "aws-lab-gw"
-    route_table_name  = "aws-lab-rt"
-    route_table_cidr  = "0.0.0.0/0"
-  }
-  kms_config = {
-    name                    = "alias/aws-lab-kms"
-    description             = "aws-lab-kms"
-    deletion_window_in_days = 7
-  }
-  efs_config = {
-    creation_token = "awslab"
-    encrypted      = true
-    name           = "awslab"
-  }
-  ec2_config = {
-    instance_type               = "t2.micro"
-    instance_name               = "aws-lab"
-    key_name                    = "aws-lab"
-    associate_public_ip_address = true
-    count                       = 1
-    encrypted                   = true
-    volume_type                 = "gp2"
-    volume_size                 = 8
-  }
-  s3_config = {
-    bucket_name       = "awslab"
-    count             = 1
-    versioning_status = "Enabled"
-  }
-  rds_sm_config = {
+  rds_sm = {
     length                  = 16
     special                 = false
     min_upper               = 3
@@ -42,7 +7,7 @@ locals {
     min_numeric             = 3
     recovery_window_in_days = 0
   }
-  rds_config = {
+  rds = {
     count                           = 1
     identifier                      = "awslab"
     instance_class                  = "db.t2.micro"
