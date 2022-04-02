@@ -40,5 +40,5 @@ module "rds" {
   engine_version                  = local.rds.engine_version
   license_model                   = local.rds.license_model
   subnet_ids                      = module.private_subnet.id
-  depends_on                      = [ module.rds_password, module.kms]
+  depends_on                      = [module.rds_password, module.kms]
 }

@@ -10,6 +10,6 @@ variable "assume_role_policy" {
 }
 
 variable "policy_document" {
-    description = "Policy document"
-    type        = any
+  description = "Policy document"
+  type        = any
 }

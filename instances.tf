@@ -1,16 +1,16 @@
 
 module "public_ec2_role" {
-  source                      = "./modules/iam/role"
-  role_name = local.public_ec2_role.role_name
+  source             = "./modules/iam/role"
+  role_name          = local.public_ec2_role.role_name
   assume_role_policy = data.aws_iam_policy_document.public_ec2_role.json
-  policy_document = data.aws_iam_policy_document.puclic_ec2_policy_document.json
+  policy_document    = data.aws_iam_policy_document.puclic_ec2_policy_document.json
 }
 
 module "private_ec2_role" {
-  source                      = "./modules/iam/role"
-  role_name = local.private_ec2_role.role_name
+  source             = "./modules/iam/role"
+  role_name          = local.private_ec2_role.role_name
   assume_role_policy = data.aws_iam_policy_document.private_ec2_role.json
-  policy_document = data.aws_iam_policy_document.private_ec2_policy_document.json
+  policy_document    = data.aws_iam_policy_document.private_ec2_policy_document.json
 }
 
 module "public_ec2" {
@@ -29,7 +29,7 @@ module "public_ec2" {
   volume_size                 = local.public_ec2.volume_size
   user_data                   = data.cloudinit_config.user_data.rendered
   iam_instance_profile        = module.public_ec2_role.name
-  depends_on                  = [ data.cloudinit_config.user_data, module.kms]
+  depends_on                  = [data.cloudinit_config.user_data, module.kms]
 }
 
 module "private_ec2" {
@@ -48,5 +48,5 @@ module "private_ec2" {
   volume_size                 = local.private_ec2.volume_size
   user_data                   = data.cloudinit_config.user_data.rendered
   iam_instance_profile        = module.private_ec2_role.name
-  depends_on                  = [ data.cloudinit_config.user_data, module.kms]
+  depends_on                  = [data.cloudinit_config.user_data, module.kms]
 }

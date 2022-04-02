@@ -1,10 +1,10 @@
 locals {
-public_ec2_role = {
+  public_ec2_role = {
     role_name = "PublicEC2Role"
-   }
-private_ec2_role = {
+  }
+  private_ec2_role = {
     role_name = "PrivateEC2Role"
-   }
+  }
   public_ec2 = {
     instance_type               = "t2.micro"
     instance_name               = "public_ec2"
