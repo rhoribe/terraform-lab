@@ -15,3 +15,4 @@ data "cloudinit_config" "user_data" {
     EOF
   }
 }
+
