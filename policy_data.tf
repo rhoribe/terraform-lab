@@ -29,8 +29,7 @@ data "aws_iam_policy_document" "puclic_ec2_policy_document" {
     actions = [
       "s3:*"
     ]
-
-    resources = ["${module.s3[0].arn}/*"]
+    resources = ["${module.s3[0].arn}"]
   }
 }
 
@@ -41,7 +40,6 @@ data "aws_iam_policy_document" "private_ec2_policy_document" {
     actions = [
       "s3:*"
     ]
-
-    resources = ["${module.s3[0].arn}/*"]
+    resources = ["${module.s3[0].arn}"]
   }
 }

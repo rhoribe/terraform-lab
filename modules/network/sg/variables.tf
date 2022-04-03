@@ -1,19 +1,19 @@
 variable "sg_name" {
   description = "Security Group Name"
   type        = string
-  default     = null
+  default     = ""
 }
 
 variable "sg_description" {
   description = "Security Group descritpion"
   type        = string
-  default     = null
+  default     = ""
 }
 
 variable "vpc_id" {
   description = "VPC ID"
   type        = string
-  default     = null
+  default     = ""
 }
 
 variable "ingress" {

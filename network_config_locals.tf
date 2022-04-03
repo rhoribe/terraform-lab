@@ -13,6 +13,11 @@ locals {
     subnet_cidr       = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
     availability_zone = ["us-east-1a", "us-east-1b", "us-east-1c"]
   }
+  data_subnet = {
+    subnet_name       = "data"
+    subnet_cidr       = ["10.0.7.0/24", "10.0.8.0/24", "10.0.9.0/24"]
+    availability_zone = ["us-east-1a", "us-east-1b", "us-east-1c"]
+  }
   internetgw = {
     internet_gateway_name = "internet-gateway"
   }
@@ -22,6 +27,11 @@ locals {
   natgw1 = {
     nat_gateway_name  = "nat-gateway"
     connectivity_type = "public"
+  }
+  vpce_s3 = {
+    vpce_name         = "vpce-s3"
+    vpc_endpoint_type = "Gateway"
+    service_name      = "com.amazonaws.us-east-1.s3"
   }
   public_route_table = {
     route_table_name = "public-route-table"
@@ -53,4 +63,7 @@ locals {
       }
     ]
   }
+  data_route_table = {
+    route_table_name = "data-route-table"
+  }  
 }

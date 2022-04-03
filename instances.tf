@@ -16,7 +16,7 @@ module "private_ec2_role" {
 module "public_ec2" {
   source                      = "./modules/ec2"
   count                       = local.public_ec2.count
-  ami                         = data.aws_ami.ubuntu.id
+  ami                         = data.aws_ami.amazon_linux.id
   instance_type               = local.public_ec2.instance_type
   instance_name               = "${local.public_ec2.instance_name}-${count.index}"
   associate_public_ip_address = local.public_ec2.associate_public_ip_address
@@ -35,7 +35,7 @@ module "public_ec2" {
 module "private_ec2" {
   source                      = "./modules/ec2"
   count                       = local.private_ec2.count
-  ami                         = data.aws_ami.ubuntu.id
+  ami                         = data.aws_ami.amazon_linux.id
   instance_type               = local.private_ec2.instance_type
   instance_name               = "${local.private_ec2.instance_name}-${count.index}"
   associate_public_ip_address = local.private_ec2.associate_public_ip_address
