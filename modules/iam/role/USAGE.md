@@ -3,30 +3,28 @@
 
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| terraform | >= 1.0 |
-| aws | ~> 4.0.0 |
+No requirements.
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | ~> 4.0.0 |
-| cloudinit | n/a |
-| random | n/a |
+| aws | n/a |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| region | AWS region | `string` | `"us-east-1"` | no |
+| assume\_role\_policy | Policy document | `any` | n/a | yes |
+| policy\_document | Policy document | `any` | n/a | yes |
+| role\_name | Role name | `string` | `""` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| private\_subnet\_ids | n/a |
-| public\_subnet\_ids | n/a |
+| arn | n/a |
+| id | n/a |
+| name | n/a |
 
 <!--- END_TF_DOCS --->
