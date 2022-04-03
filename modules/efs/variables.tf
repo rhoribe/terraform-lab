@@ -7,23 +7,23 @@ variable "encrypted" {
 variable "kms_key_id" {
   type        = string
   description = "KMS Key ID"
-  default     = ""
+  default     = null
 }
 
 variable "availability_zone_name" {
   type        = string
   description = "Availability zone"
-  default     = ""
+  default     = null
 }
 
 variable "name" {
   type        = string
   description = "Name"
-  default     = ""
+  default     = null
 }
 
 variable "creation_token" {
   type        = string
   description = "Creation token"
-  default     = ""
+  default     = null
 }
