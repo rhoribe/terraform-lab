@@ -15,17 +15,15 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| availability\_zone\_name | Availability zone | `string` | `null` | no |
-| creation\_token | Creation token | `string` | `null` | no |
-| encrypted | Ecrypted | `bool` | `false` | no |
-| kms\_key\_id | KMS Key ID | `string` | `null` | no |
-| name | Name | `string` | `null` | no |
+| deletion\_window\_in\_days | The number of days to wait before deleting the resource | `number` | `7` | no |
+| description | Description of the resource | `string` | `"A resource"` | no |
+| name | Name of the resource | `string` | `"MyResource"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | arn | n/a |
-| id | n/a |
+| key\_id | n/a |
 
 <!--- END_TF_DOCS --->
