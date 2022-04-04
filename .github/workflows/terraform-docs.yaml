@@ -15,7 +15,7 @@ jobs:
     - name: Render terraform docs inside the USAGE.md and push changes back to PR branch
       uses: DNXLabs/terraform-docs@v1.0.0
       with:
-        tf_docs_working_dir: .,modules/iam/role/,modules/efs/,modules/kms/,modules/rds/,modules/s3/,modules/secretmanager/,modules/network/eip/,modules/network/endpoint/,modules/network/internetgw/,modules/network/natgw/,modules/network/routetable/common/,modules/network/routetable/data/,mmodules/network/sg/,modules/network/subnet/,modules/network/vpc/  
+        tf_docs_working_dir: .,modules/iam/role/,modules/efs/,modules/kms/,modules/rds/,modules/s3/,modules/secretmanager/,modules/network/eip/,modules/network/endpoint/
         tf_docs_output_file: USAGE.md
         tf_docs_output_method: inject
         tf_docs_git_push: 'true'
