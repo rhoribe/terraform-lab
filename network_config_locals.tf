@@ -65,5 +65,5 @@ locals {
   }
   data_route_table = {
     route_table_name = "data-route-table"
-  }  
+  }
 }

@@ -1,27 +1,27 @@
 variable "length" {
-  type    = number
+  type = number
 }
 
 variable "special" {
-  type    = bool
+  type = bool
 }
 
 variable "min_upper" {
-  type    = number
+  type = number
 }
 
 variable "min_lower" {
-  type    = number
+  type = number
 }
 
 variable "min_numeric" {
-  type    = number
+  type = number
 }
 
 variable "name" {
-  type    = string
+  type = string
 }
 
 variable "recovery_window_in_days" {
-  type    = number
+  type = number
 }

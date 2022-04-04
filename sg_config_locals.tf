@@ -71,5 +71,5 @@ locals {
         security_groups = []
       }
     ]
-  }  
+  }
 }
