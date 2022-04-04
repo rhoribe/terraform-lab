@@ -15,7 +15,7 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| eip\_name | EIP name | `string` | `null` | no |
+| eip\_name | EIP name | `string` | n/a | yes |
 
 ## Outputs
 

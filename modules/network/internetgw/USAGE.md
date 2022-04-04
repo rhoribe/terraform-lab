@@ -15,8 +15,8 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| internet\_gw\_name | Internet  Gateway Name | `string` | `null` | no |
-| vpc\_id | The VPC id | `string` | `""` | no |
+| internet\_gw\_name | Internet  Gateway Name | `string` | n/a | yes |
+| vpc\_id | The VPC id | `string` | n/a | yes |
 
 ## Outputs
 

@@ -15,7 +15,7 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| vpc\_cidr | vpc cidr | `string` | `""` | no |
+| vpc\_cidr | vpc cidr | `string` | n/a | yes |
 | vpc\_name | The name of the VPC | `string` | `""` | no |
 
 ## Outputs

@@ -17,7 +17,7 @@ No requirements.
 |------|-------------|------|---------|:--------:|
 | assume\_role\_policy | Policy document | `any` | n/a | yes |
 | policy\_document | Policy document | `any` | n/a | yes |
-| role\_name | Role name | `string` | `""` | no |
+| role\_name | Role name | `string` | n/a | yes |
 
 ## Outputs
 

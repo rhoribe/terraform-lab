@@ -15,11 +15,11 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| route\_table\_id | Route Table ID | `string` | `""` | no |
-| service\_name | Serivice Name | `string` | `""` | no |
-| vpc\_endpoint\_type | VPC Endpoint Type | `string` | `""` | no |
-| vpc\_id | VPC ID | `string` | `""` | no |
-| vpce\_name | VPC Endpoint Name | `string` | `""` | no |
+| route\_table\_id | Route Table ID | `string` | n/a | yes |
+| service\_name | Serivice Name | `string` | n/a | yes |
+| vpc\_endpoint\_type | VPC Endpoint Type | `string` | n/a | yes |
+| vpc\_id | VPC ID | `string` | n/a | yes |
+| vpce\_name | VPC Endpoint Name | `string` | n/a | yes |
 
 ## Outputs
 

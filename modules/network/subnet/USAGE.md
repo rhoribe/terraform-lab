@@ -15,10 +15,10 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| availability\_zone | Availability zone | `list(any)` | `[]` | no |
-| subnet\_cidr | Subnet cidr block | `list(any)` | `[]` | no |
-| subnet\_name | Subnet name | `string` | `""` | no |
-| vpc\_id | The VPC id | `string` | `""` | no |
+| availability\_zone | Availability zone | `list(any)` | n/a | yes |
+| subnet\_cidr | Subnet cidr block | `list(any)` | n/a | yes |
+| subnet\_name | Subnet name | `string` | n/a | yes |
+| vpc\_id | The VPC id | `string` | n/a | yes |
 
 ## Outputs
 

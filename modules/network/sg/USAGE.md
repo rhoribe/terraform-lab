@@ -15,11 +15,11 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| egress | Egress Rules | `any` | `[]` | no |
-| ingress | Ingress Rules | `any` | `[]` | no |
-| sg\_description | Security Group descritpion | `string` | `""` | no |
-| sg\_name | Security Group Name | `string` | `""` | no |
-| vpc\_id | VPC ID | `string` | `""` | no |
+| egress | Egress Rules | `any` | n/a | yes |
+| ingress | Ingress Rules | `any` | n/a | yes |
+| sg\_description | Security Group descritpion | `string` | n/a | yes |
+| sg\_name | Security Group Name | `string` | n/a | yes |
+| vpc\_id | VPC ID | `string` | n/a | yes |
 
 ## Outputs
 

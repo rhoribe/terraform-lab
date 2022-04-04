@@ -15,9 +15,9 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| deletion\_window\_in\_days | The number of days to wait before deleting the resource | `number` | `7` | no |
-| description | Description of the resource | `string` | `"A resource"` | no |
-| name | Name of the resource | `string` | `"MyResource"` | no |
+| deletion\_window\_in\_days | The number of days to wait before deleting the resource | `number` | n/a | yes |
+| description | Description of the resource | `string` | n/a | yes |
+| name | Name of the resource | `string` | n/a | yes |
 
 ## Outputs
 

@@ -15,11 +15,11 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| availability\_zone\_name | Availability zone | `string` | `null` | no |
-| creation\_token | Creation token | `string` | `null` | no |
+| availability\_zone\_name | Availability zone | `string` | n/a | yes |
+| creation\_token | Creation token | `string` | n/a | yes |
 | encrypted | Ecrypted | `bool` | `false` | no |
-| kms\_key\_id | KMS Key ID | `string` | `null` | no |
-| name | Name | `string` | `null` | no |
+| kms\_key\_id | KMS Key ID | `string` | n/a | yes |
+| name | Name | `string` | n/a | yes |
 
 ## Outputs
 
