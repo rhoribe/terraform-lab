@@ -20,8 +20,13 @@ resource "random_id" "random_sufix" {
 }
 
 module "s3" {
-  source            = "./modules/s3"
-  count             = local.s3.count
-  versioning_status = local.s3.versioning_status
-  bucket            = "${local.s3.bucket_name}-${count.index}-${random_id.random_sufix.hex}"
+  source                  = "./modules/s3"
+  count                   = local.s3.count
+  versioning_status       = local.s3.versioning_status
+  restrict_public_buckets = local.s3.restrict_public_buckets
+  ignore_public_acls      = local.s3.ignore_public_acls
+  block_public_acls       = local.s3.block_public_acls
+  block_public_policy     = local.s3.block_public_policy
+  tags                    = local.s3.tags
+  bucket                  = "${local.s3.bucket_name}-${count.index}-${random_id.random_sufix.hex}"
 }

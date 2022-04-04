@@ -10,8 +10,13 @@ locals {
     name           = "awslab"
   }
   s3 = {
-    bucket_name       = "awslab"
-    count             = 1
-    versioning_status = "Enabled"
+    bucket_name             = "awslab"
+    count                   = 1
+    versioning_status       = "Enabled"
+    restrict_public_buckets = true
+    ignore_public_acls      = true
+    block_public_acls       = true
+    block_public_policy     = true
+    tags                    = {}
   }
 }
