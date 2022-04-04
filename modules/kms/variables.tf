@@ -1,17 +1,14 @@
 variable "description" {
   description = "Description of the resource"
   type        = string
-  default     = "A resource"
 }
 
 variable "deletion_window_in_days" {
   description = "The number of days to wait before deleting the resource"
   type        = number
-  default     = 7
 }
 
 variable "name" {
   description = "Name of the resource"
   type        = string
-  default     = "MyResource"
 }
